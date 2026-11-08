@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hacking AI: The Security Risks Behind AI</title>
+  <meta name="description" content="Publication of the guest talk by Mohammed Zuoriki at the OWASP University of Exeter Student Chapter, 2026/2027 academic year.">
+  <meta name="author" content="Mohammed Zuoriki">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <script>
+    (function () {
+      var s = null;
+      try { s = localStorage.getItem("scheme"); } catch (e) {}
+      if (!s) s = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.setAttribute("data-scheme", s);
+    })();
+  </script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a class="site-title" href="./index.html">Hacking AI: The Security Risks Behind AI</a>
+      <div class="header-tools">
+        <button class="scheme-toggle" type="button" aria-label="Toggle dark mode">
+          <span class="to-dark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg></span><span class="to-light"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg></span>
+        </button>
+        <div class="search">
+          <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg></span>
+          <input type="search" placeholder="Search" aria-label="Search" autocomplete="off">
+          <div class="search-results" hidden></div>
+        </div>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Main"><div class="tabs-inner"><a class="tab active" href="index.html">Home</a><a class="tab" href="talk/index.html">The Talk</a><a class="tab" href="slides/index.html">Slides</a><a class="tab" href="gallery/index.html">Gallery</a><a class="tab" href="speaker/index.html">Speaker</a><a class="tab" href="resources/index.html">Resources</a></div></nav>
+  </header>
+
+  <div class="layout no-sidebar no-toc">
+    
+    <main class="content typeset">
+<div class="hero">
+<div class="eyebrow">OWASP University of Exeter · Guest Talk Speaker · 2026/27</div>
+<h1 id="hacking-aithe-security-risks-behind-ai">Hacking AI:<br>The Security Risks Behind AI<a class="headerlink" href="#hacking-aithe-security-risks-behind-ai" title="Permanent link">#</a></h1>
+<p class="lede">How AI-powered applications get broken, and why every developer and curious user needs to care. From powerful tools to real-world threats, and how to stay ahead.</p>
+<div class="meta">
+<p><span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c2.67 0 8 1.34 8 4v2H1v-2c0-2.66 5.33-4 8-4m7.76-9.64c2.02 2.2 2.02 5.25 0 7.27l-1.68-1.69c.84-1.18.84-2.71 0-3.89zM20.07 2c3.93 4.05 3.9 10.11 0 14l-1.63-1.63c2.77-3.18 2.77-7.72 0-10.74z"/></svg></span> Mohammed Zuoriki</span><span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 11.5A2.5 2.5 0 0 1 9.5 9 2.5 2.5 0 0 1 12 6.5 2.5 2.5 0 0 1 14.5 9a2.5 2.5 0 0 1-2.5 2.5M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7"/></svg></span> University of Exeter</span><span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg></span> October 2026</span></p>
+</div>
+<p><a class="md-button md-button--primary" href="talk/index.html">Read the talk <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></span></a>
+<a class="md-button" href="slides/index.html">View the slides</a>
+<a class="md-button" href="assets/files/hacking-ai-slides.pdf">Download PDF <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7z"/></svg></span></a></p>
+</div>
+<h2 id="about-this-publication">About this publication<a class="headerlink" href="#about-this-publication" title="Permanent link">#</a></h2>
+<p>At the start of the <strong>2026/2027 academic year</strong>, the <strong><abbr title="Open Worldwide Application Security Project">OWASP</abbr> University of Exeter Student Chapter</strong> opened its cybersecurity programme with a guest talk from <strong>Mohammed Zuoriki</strong>, a Computer Science with Cybersecurity student at Brunel University London.</p>
+<p>The talk, <em>Hacking AI: The Security Risks Behind AI</em>, looked past traditional code vulnerabilities to a newer class of problem: <strong>conversational exploits that persuade AI systems to misbehave</strong>. This site is the written companion to that session. It covers the ideas, the slides and photos from the evening, and resources for anyone who wants to keep learning.</p>
+<figure>
+<p><img alt="Mohammed Zuoriki presenting the opening slide of &quot;Hacking AI&quot; at the University of Exeter" loading="lazy" src="assets/photos/opening-slide.jpg" /></p>
+<figcaption>Opening the 2026/27 OWASP Exeter programme, with the title slide on screen.</figcaption>
+</figure>
+<h2 id="the-talk-at-a-glance">The talk at a glance<a class="headerlink" href="#the-talk-at-a-glance" title="Permanent link">#</a></h2>
+<div class="card-grid">
+<div class="card">
+<div class="num">01 · CONTEXT</div>
+<h3 id="why-it-matters"><a href="talk/why-it-matters/index.html">Why it matters</a><a class="headerlink" href="#why-it-matters" title="Permanent link">#</a></h3>
+<p><abbr title="Large Language Models">LLMs</abbr> have moved from study helpers to production systems with write access to real data.</p>
+</div>
+<div class="card">
+<div class="num">02 · MENTAL MODEL</div>
+<h3 id="a-very-eager-intern"><a href="talk/mental-model/index.html">A very eager intern</a><a class="headerlink" href="#a-very-eager-intern" title="Permanent link">#</a></h3>
+<p>Fast, well-read, eager to please, and with no situational awareness.</p>
+</div>
+<div class="card">
+<div class="num">03 · THREATS</div>
+<h3 id="five-ways-to-break-an-ai-app"><a href="talk/threat-landscape/index.html">Five ways to break an AI app</a><a class="headerlink" href="#five-ways-to-break-an-ai-app" title="Permanent link">#</a></h3>
+<p>Prompt injection, jailbreaks, data leaks, poisoned data and insecure actions.</p>
+</div>
+<div class="card">
+<div class="num">04 · DEFENCE</div>
+<h3 id="how-defenders-fight-back"><a href="talk/defences/index.html">How defenders fight back</a><a class="headerlink" href="#how-defenders-fight-back" title="Permanent link">#</a></h3>
+<p>Least privilege, untrusted input, human oversight and adversarial testing.</p>
+</div>
+</div>
+<blockquote class="pull">
+<p>When natural language becomes the execution engine, words turn into untrusted inputs.</p>
+</blockquote>
+<h2 id="key-takeaways">Key takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">#</a></h2>
+<ol>
+<li><strong>AI changes the attack surface, not the fundamentals.</strong> Untrusted input, excessive privilege and missing oversight are old problems in a new form.</li>
+<li><strong>Attackers persuade; they don't buffer-overflow.</strong> No assembly or shellcode, just carefully worded text.</li>
+<li><strong>The model can't reliably tell who is in charge.</strong> Developer rules and attacker instructions arrive in the same context window.</li>
+<li><strong>Secure it before someone else tests it.</strong> Design for least access, treat everything the model reads as untrusted, keep a human in the loop and red-team early.</li>
+</ol>
+<div class="card-grid">
+<div class="card">
+<h3 id="event-gallery"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 16V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2m-11-4 2.03 2.71L16 11l4 5H8M2 6v14a2 2 0 0 0 2 2h14v-2H4V6"/></svg></span> <a href="gallery/index.html">Event gallery</a><a class="headerlink" href="#event-gallery" title="Permanent link">#</a></h3>
+<p>Photos from the evening at the University of Exeter.</p>
+</div>
+<div class="card">
+<h3 id="about-the-speaker"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4m4 10.54c0 1.06-.28 3.53-2.19 6.29L13 15l.94-1.88c-.62-.07-1.27-.12-1.94-.12s-1.32.05-1.94.12L11 15l-.81 4.83C8.28 17.07 8 14.6 8 13.54c-2.39.7-4 1.96-4 3.46v4h16v-4c0-1.5-1.6-2.76-4-3.46"/></svg></span> <a href="speaker/index.html">About the speaker</a><a class="headerlink" href="#about-the-speaker" title="Permanent link">#</a></h3>
+<p>Competitive programmer, security researcher, author and creator.</p>
+</div>
+<div class="card">
+<h3 id="further-resources"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg></span> <a href="resources/index.html">Further resources</a><a class="headerlink" href="#further-resources" title="Permanent link">#</a></h3>
+<p><abbr title="Open Worldwide Application Security Project">OWASP</abbr> Top 10 for <abbr title="Large Language Model">LLM</abbr> Applications and safe places to practise.</p>
+</div>
+</div>
+    </main>
+    
+  </div>
+
+  <footer class="footer">
+    <div class="footer-nav"><div class="footer-inner"><span class="spacer"></span><a class="next" href="talk/index.html"><span><small>Next</small>The Talk</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></a></div></div>
+    <div class="footer-meta"><div class="footer-inner">
+      <span>&copy; 2026 Mohammed Zuoriki &middot; Delivered at the OWASP University of Exeter Student Chapter</span>
+      <span class="social"><a href="https://www.youtube.com/@CyberTutor24" title="CyberTutor on YouTube" aria-label="CyberTutor on YouTube" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"/></svg></a><a href="https://www.linkedin.com/in/mohammed-zuoriki-856133250/" title="Mohammed Zuoriki on LinkedIn" aria-label="Mohammed Zuoriki on LinkedIn" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg></a><a href="https://github.com/Code-tech77" title="Code-tech77 on GitHub" aria-label="Code-tech77 on GitHub" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg></a><a href="https://owasp.org/" title="OWASP Foundation" aria-label="OWASP Foundation" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M351.9 280H161c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zm-191-48h190.9c-2.8-64.5-17.1-123.9-37.4-167.4-11.4-24.4-23.7-41.8-35.1-52.4C268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4m-48 0c3.5-85.6 25.6-165.1 57.9-217.3C78.7 47.3 10.9 131.2 1.5 232zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3zm111.4-48C501.9 131.2 434.1 47.3 342 14.7c32.3 52.2 54.4 131.7 57.9 217.3z"/></svg></a></span>
+    </div></div>
+  </footer>
+
+  <button class="to-top" type="button" aria-label="Back to top" hidden>&uarr; Back to top</button>
+
+  <script src="./js/search-index.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
